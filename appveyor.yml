@@ -12,7 +12,7 @@ build_script:
   - ps: .\build.ps1
 
 test_script:
-  - docker run whoami
+  - ps: .\test.ps1
 
 deploy_script:
   - ps: .\deploy.ps1
