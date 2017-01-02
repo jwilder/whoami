@@ -15,6 +15,9 @@ docker system prune -f
 
 docker build -t httpbuild -f Dockerfile.build .
 docker create --name httpbuild httpbuild
+if (!(Test-Path tmp)) {
+  mkdir tmp
+}
 docker cp httpbuild:/code/http.exe tmp
 docker build -t whoami .
 
