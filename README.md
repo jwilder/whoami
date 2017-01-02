@@ -1,4 +1,5 @@
 # whoami for Windows
+[![Build status](https://ci.appveyor.com/api/projects/status/bhma7tmx0eje73ao/branch/master?svg=true)](https://ci.appveyor.com/project/StefanScherer/whoami/branch/master)
 
 Simple HTTP docker service that prints it's container ID
 
