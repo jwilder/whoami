@@ -8,3 +8,5 @@ Simple HTTP docker service that prints it's container ID
 
     $ (iwr http://$(docker inspect -f '{{ .NetworkSettings.Networks.nat.IPAddress }}' whoami):8000 -UseBasicParsing).Content
     I'm 736ab83847bb
+
+Used for a first [swarm-mode demo](https://github.com/StefanScherer/docker-windows-box/tree/master/swarm-mode) with Windows containers.
