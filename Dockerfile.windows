@@ -1,0 +1,14 @@
+FROM golang:nanoserver
+
+COPY . /code
+WORKDIR /code
+
+RUN go build http.go
+
+FROM microsoft/nanoserver
+
+COPY --from=0 /code/http.exe /http.exe
+
+EXPOSE 8080
+
+CMD ["\\http.exe"]
