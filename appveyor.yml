@@ -1,4 +1,6 @@
 version: 1.0.{build}
+image: Visual Studio 2017
+
 environment:
   DOCKER_USER:
     secure: LjNiW/ZWrfVIJn3Mc9foeg==
@@ -6,10 +8,17 @@ environment:
     secure: 4gsl5WiqIztEWhL5fuhp9X0qT/mKg9fYzKYUUPf5WStIuNddv0fvIKGmvvyuFzzd
 
 build_script:
-  - ps: .\build.ps1
+  - ps: .\appveyor-build.ps1
 
 test_script:
-  - ps: .\test.ps1
+  - ps: .\appveyor-test.ps1
 
 deploy_script:
-  - ps: .\deploy.ps1
+  - ps: >-
+      if (Test-Path Env:\APPVEYOR_REPO_TAG_NAME) {
+
+        docker login -u="$env:DOCKER_USER" -p="$env:DOCKER_PASS"
+
+        .\appveyor-deploy.ps1
+
+      }
