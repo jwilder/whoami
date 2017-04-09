@@ -1,24 +1,18 @@
 #!/bin/bash
 set -e
 
-which docker
-
-systemctl stop docker
-
 echo "Updating Docker engine to master"
-curl -L -o /usr/local/bin/docker-containerd https://master.dockerproject.org/linux/amd64/docker-containerd
-curl -L -o /usr/local/bin/docker-containerd-ctr https://master.dockerproject.org/linux/amd64/docker-containerd-ctr
-curl -L -o /usr/local/bin/docker-containerd-shim https://master.dockerproject.org/linux/amd64/docker-containerd-shim
-curl -L -o /usr/local/bin/dockerd https://master.dockerproject.org/linux/amd64/dockerd
-curl -L -o /usr/local/bin/docker-init https://master.dockerproject.org/linux/amd64/docker-init
-curl -L -o /usr/local/bin/docker-proxy https://master.dockerproject.org/linux/amd64/docker-proxy
-curl -L -o /usr/local/bin/docker-runc https://master.dockerproject.org/linux/amd64/docker-runc
-curl -L -o /usr/local/bin/docker https://master.dockerproject.org/linux/amd64/docker
-
-systemctl start docker
-
+service docker stop
+sudo curl -L -o /usr/local/bin/docker-containerd https://master.dockerproject.org/linux/amd64/docker-containerd
+sudo curl -L -o /usr/local/bin/docker-containerd-ctr https://master.dockerproject.org/linux/amd64/docker-containerd-ctr
+sudo curl -L -o /usr/local/bin/docker-containerd-shim https://master.dockerproject.org/linux/amd64/docker-containerd-shim
+sudo curl -L -o /usr/local/bin/dockerd https://master.dockerproject.org/linux/amd64/dockerd
+sudo curl -L -o /usr/local/bin/docker-init https://master.dockerproject.org/linux/amd64/docker-init
+sudo curl -L -o /usr/local/bin/docker-proxy https://master.dockerproject.org/linux/amd64/docker-proxy
+sudo curl -L -o /usr/local/bin/docker-runc https://master.dockerproject.org/linux/amd64/docker-runc
+sudo curl -L -o /usr/local/bin/docker https://master.dockerproject.org/linux/amd64/docker
+service docker start
 docker version
-
 
 if [ "$ARCH" != "amd64" ]; then
   # prepare qemu
