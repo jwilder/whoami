@@ -1,0 +1,20 @@
+sudo: required
+
+services:
+ - docker
+
+env:
+  matrix:
+    - ARCH=arm
+    - ARCH=arm64
+    - ARCH=amd64
+
+script:
+  - ./travis-build.sh
+  - ./travis-test.sh
+  - >
+    if [ -n "$TRAVIS_TAG" ]; then
+      # push image
+      travis_retry timeout 5m docker login -u="$DOCKER_USER" -p="$DOCKER_PASS"
+      ./travis-deploy.sh
+    fi
