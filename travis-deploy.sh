@@ -36,6 +36,8 @@ if [ "$ARCH" == "amd64" ]; then
     "$image:linux-arm-$TRAVIS_TAG" \
     "$image:linux-arm64-$TRAVIS_TAG" \
     "$image:windows-amd64-$TRAVIS_TAG"
+  ./docker manifest annotate "$image:$TRAVIS_TAG" "$image:linux-arm-$TRAVIS_TAG" --os linux --arch arm
+  ./docker manifest annotate "$image:$TRAVIS_TAG" "$image:linux-arm64-$TRAVIS_TAG" --os linux --arch arm64
   ./docker manifest push "$image:$TRAVIS_TAG"
 
   echo "Pushing manifest $image:latest"
@@ -44,5 +46,7 @@ if [ "$ARCH" == "amd64" ]; then
     "$image:linux-arm-$TRAVIS_TAG" \
     "$image:linux-arm64-$TRAVIS_TAG" \
     "$image:windows-amd64-$TRAVIS_TAG"
+  ./docker manifest annotate "$image:$TRAVIS_TAG" "$image:linux-arm-$TRAVIS_TAG" --os linux --arch arm
+  ./docker manifest annotate "$image:$TRAVIS_TAG" "$image:linux-arm64-$TRAVIS_TAG" --os linux --arch arm64
   ./docker manifest push "$image:latest"
 fi
