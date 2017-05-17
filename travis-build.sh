@@ -1,17 +1,11 @@
 #!/bin/bash
 set -e
 
-echo "Updating Docker engine to master"
+docker version
+uname -a
+echo "Updating Docker engine to 17.05.0"
 sudo service docker stop
-sudo curl -L -o /usr/bin/docker-containerd https://master.dockerproject.org/linux/amd64/docker-containerd
-sudo curl -L -o /usr/bin/docker-containerd-ctr https://master.dockerproject.org/linux/amd64/docker-containerd-ctr
-sudo curl -L -o /usr/bin/docker-containerd-shim https://master.dockerproject.org/linux/amd64/docker-containerd-shim
-sudo curl -L -o /usr/bin/dockerd https://master.dockerproject.org/linux/amd64/dockerd
-sudo curl -L -o /usr/bin/docker-init https://master.dockerproject.org/linux/amd64/docker-init
-sudo curl -L -o /usr/bin/docker-proxy https://master.dockerproject.org/linux/amd64/docker-proxy
-sudo curl -L -o /usr/bin/docker-runc https://master.dockerproject.org/linux/amd64/docker-runc
-sudo curl -L -o /usr/bin/docker https://master.dockerproject.org/linux/amd64/docker
-sudo service docker start
+curl -fsSL https://get.docker.com/ | sudo sh
 docker version
 
 if [ "$ARCH" != "amd64" ]; then
