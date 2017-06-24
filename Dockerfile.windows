@@ -1,4 +1,4 @@
-FROM golang:nanoserver
+FROM golang:nanoserver AS build
 
 COPY . /code
 WORKDIR /code
@@ -7,7 +7,7 @@ RUN go build http.go
 
 FROM microsoft/nanoserver
 
-COPY --from=0 /code/http.exe /http.exe
+COPY --from=build /code/http.exe /http.exe
 
 EXPOSE 8080
 
