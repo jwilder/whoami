@@ -1,0 +1,13 @@
+version: 2
+jobs:
+  build:
+    working_directory: ~/whoami
+    machine: true
+    steps:
+      - checkout
+      - run: docker version
+      # get latest CE version
+      - run: curl -fsSL https://raw.githubusercontent.com/StefanScherer/docker-init/master/ubuntu/install-docker-ce.sh | sh
+      - run: docker version
+      - run: ARCH=arm ./travis-build.sh
+      - run: ARCH=arm ./travis-test.sh
