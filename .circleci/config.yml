@@ -1,0 +1,9 @@
+version: 2
+jobs:
+  build:
+    working_directory: ~/whoami
+    machine: true
+    steps:
+      - checkout
+      - run: ARCH=arm ./travis-build.sh
+      - run: ARCH=arm ./travis-test.sh
