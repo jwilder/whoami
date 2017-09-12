@@ -26,7 +26,7 @@ if [ "$ARCH" == "amd64" ]; then
   set -e
 
   echo "Downloading docker client with manifest command"
-  wget https://4292-88013053-gh.circle-artifacts.com/1/work/build/docker-linux-amd64
+  wget https://5028-88013053-gh.circle-artifacts.com/1/work/build/docker-linux-amd64
   mv docker-linux-amd64 docker
   chmod +x docker
   ./docker version
