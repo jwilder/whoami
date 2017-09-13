@@ -26,7 +26,7 @@ if [ "$ARCH" == "amd64" ]; then
   set -e
 
   echo "Downloading docker client with manifest command"
-  wget https://4292-88013053-gh.circle-artifacts.com/1/work/build/docker-linux-amd64
+  wget https://5028-88013053-gh.circle-artifacts.com/1/work/build/docker-linux-amd64
   mv docker-linux-amd64 docker
   chmod +x docker
   ./docker version
@@ -41,7 +41,7 @@ if [ "$ARCH" == "amd64" ]; then
     "$image:windows-amd64-$TRAVIS_TAG"
   ./docker manifest annotate "$image:$TRAVIS_TAG" "$image:linux-arm-$TRAVIS_TAG" --os linux --arch arm
   ./docker manifest annotate "$image:$TRAVIS_TAG" "$image:linux-arm64-$TRAVIS_TAG" --os linux --arch arm64
-  ./docker -D manifest push "$image:$TRAVIS_TAG"
+  ./docker manifest push "$image:$TRAVIS_TAG"
 
   echo "Pushing manifest $image:latest"
   ./docker -D manifest create "$image:latest" \
@@ -51,5 +51,5 @@ if [ "$ARCH" == "amd64" ]; then
     "$image:windows-amd64-$TRAVIS_TAG"
   ./docker manifest annotate "$image:latest" "$image:linux-arm-$TRAVIS_TAG" --os linux --arch arm
   ./docker manifest annotate "$image:latest" "$image:linux-arm64-$TRAVIS_TAG" --os linux --arch arm64
-  ./docker manifest -D push "$image:latest"
+  ./docker manifest push "$image:latest"
 fi
