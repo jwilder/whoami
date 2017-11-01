@@ -1,9 +1,11 @@
 FROM golang AS build
 
+ARG arch=amd64
+
 COPY . /code
 WORKDIR /code
 
-RUN CGO_ENABLED=0 go build -a -installsuffix cgo http.go
+RUN CGO_ENABLED=0 GOOS=linux GOARCH=$arch go build -a -installsuffix cgo http.go
 
 FROM scratch
 
