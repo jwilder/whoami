@@ -1,5 +1,5 @@
 ARG golang=golang:nanoserver
-ARG target=microsoft/nanoserver
+ARG target=microsoft/nanoserver:10.0.14393.1884
 
 FROM $golang AS build
 

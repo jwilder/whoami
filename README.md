@@ -44,3 +44,17 @@ Simple HTTP docker service that prints it's container ID
 Used for a first
 [swarm-mode demo](https://github.com/StefanScherer/docker-windows-box/tree/master/swarm-mode)
 with Windows containers.
+
+## Query all supported platforms
+
+```
+$ docker run --rm mplatform/mquery stefanscherer/whoami
+Image: stefanscherer/whoami
+ * Manifest List: Yes
+ * Supported platforms:
+   - linux/amd64
+   - linux/arm/v6
+   - linux/arm64/v8
+   - windows/amd64:10.0.14393.1884
+   - windows/amd64:10.0.16299.19
+```
