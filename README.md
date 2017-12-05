@@ -18,6 +18,7 @@
     * linux/amd64
     * linux/arm
     * linux/arm64
+  * Wait for all images to be on Docker Hub
   * Create and push the manifest list
     * preview of `docker manifest` command
 
