@@ -54,6 +54,6 @@ Image: stefanscherer/whoami
    - linux/amd64
    - linux/arm/v6
    - linux/arm64/v8
-   - windows/amd64:10.0.14393.1884
+   - windows/amd64:10.0.14393.2007
    - windows/amd64:10.0.16299.19
 ```
