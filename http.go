@@ -5,6 +5,7 @@ import (
   "fmt"
   "net/http"
   "log"
+  "time"
 )
 
 func main() {
@@ -16,11 +17,10 @@ func main() {
     fmt.Fprintf(os.Stdout, "Listening on :%s\n", port)
     hostname, _ := os.Hostname()
     http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-        fmt.Fprintf(os.Stdout, "I'm %s\n", hostname)
- 	fmt.Fprintf(w, "I'm %s\n", hostname)
+        fmt.Fprintf(os.Stdout, "I am %s - %s\n", hostname, time.Now())
+ 	      fmt.Fprintf(w, "I am %s - %s\n", hostname, time.Now())
     })
 
 
     log.Fatal(http.ListenAndServe(":" + port, nil))
 }
-
